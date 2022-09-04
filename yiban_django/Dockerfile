@@ -10,3 +10,4 @@ RUN chmod +x /app/docker-entrypoint.sh
 EXPOSE 8001
 VOLUME /app/
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
