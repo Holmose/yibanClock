@@ -1,10 +1,14 @@
 FROM golang:1.19-alpine AS build-env
+
+ARG YIBAN_FILENAME=yiban3_V1.0.1
+ARG OUTFILENAME=yiban_clock
+
 WORKDIR /app
 COPY go.mod ./
 COPY go.sum ./
 RUN go mod download && rm -f go.mod go.sum
-ADD yiban3_V1.0.0.tar.gz ./
-RUN cd yiban3_V1.0.0 && go build -o /yiban_clock
+ADD $YIBAN_FILENAME.tar.gz ./
+RUN cd $YIBAN_FILENAME && go build -o /$OUTFILENAME
 
 FROM alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
@@ -17,9 +21,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build-env /yiban_clock /
-COPY --from=build-env /app/yiban3_V1.0.0/config/config.json /
+COPY --from=build-env /app/$YIBAN_FILENAME/config/config.json /
 ADD docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 VOLUME /app/config/
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/yiban_clock", "-clock_now=true"]
+CMD ["/$OUTFILENAME", "-clock_now=true"]
