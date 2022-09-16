@@ -50,4 +50,5 @@ jobs:
           ci-user-token: ${{ secrets.CI_TOKEN }}
           ci-name: CI
           ci-inputs: >-
+            registry=${{ secrets.REGISTRY }}
             sha-tag=${{ github.sha }}
