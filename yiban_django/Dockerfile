@@ -1,5 +1,8 @@
-FROM daocloud.io/library/python:3.6.3-stretch
+FROM python:3.6-alpine
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+    && apk add --no-cache gcc g++ musl-dev make libc-dev linux-headers pcre-dev \
+       libxslt-dev openssl-dev jpeg-dev zlib-dev
 WORKDIR /app
 ADD requirements.txt ./
 RUN pip install -r requirements.txt -i https://pypi.douban.com/simple
