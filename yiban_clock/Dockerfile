@@ -13,7 +13,9 @@ RUN apk update && \
    rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build-env /yiban_clock /
-COPY --from=build-env /app/Yiban_Clock_V2.8/config/config.json /app/config/
-#RUN mkdir /app/config/
+COPY --from=build-env /app/Yiban_Clock_V2.8/config/config.json /
+ADD docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 VOLUME /app/config/
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/yiban_clock"]
