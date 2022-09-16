@@ -28,7 +28,6 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v2.0.0
         with:
-          registry: ${{ secrets.REGISTRY }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           logout: true
@@ -38,5 +37,5 @@ jobs:
         run: |
           cd yiban_django
           make image
-          docker tag yiban-django:latest ${{ secrets.REGISTRY }}/yiban_clock/yiban-django:${{ github.sha }}
-          docker push ${{ secrets.REGISTRY }}/yiban_clock/yiban-django:${{ github.sha }}
+          docker tag yiban-django:latest ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }}
+          docker push ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }}
