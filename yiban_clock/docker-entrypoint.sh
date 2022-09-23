@@ -3,35 +3,35 @@
 set -e
 
 if [ ! $MYSQL_USER ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MYSQL_USER"
   exit 100
 fi
 if [ ! $MYSQL_PASSWORD ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MYSQL_PASSWORD"
   exit 100
 fi
 if [ ! $MYSQL_HOST ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MYSQL_HOST"
   exit 100
 fi
 if [ ! $MYSQL_PORT ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MYSQL_PORT"
   exit 100
 fi
 if [ ! $MYSQL_DATABASE ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MYSQL_DATABASE"
   exit 100
 fi
 if [ ! $MAIL_USER ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MAIL_USER"
   exit 100
 fi
 if [ ! $MAIL_PASS ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MAIL_PASS"
   exit 100
 fi
 if [ ! $MAIL_HOST ];then
-  echo "The environment variable MYSQL_USER empty"
+  echo "The environment variable MYSQL_USER empty got: $MAIL_HOST"
   exit 100
 fi
 if [ ! -f /app/config ];then
