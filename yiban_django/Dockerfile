@@ -10,6 +10,14 @@ ADD yiban_web.tar.gz /
 RUN mv /yiban_web/* /app
 ADD docker-entrypoint.sh ./
 RUN chmod +x /app/docker-entrypoint.sh
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+    && apk add tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+    && apk update && apk add ca-certificates &&  update-ca-certificates\
+    && apk add tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && rm -rf /var/cache/apk/*
 EXPOSE 8001
 VOLUME /app/
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
