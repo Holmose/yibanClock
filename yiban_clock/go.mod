@@ -1,12 +1,12 @@
-module Yiban_Clock
+module Yiban3
 
 go 1.19
 
 require (
-	github.com/dop251/goja v0.0.0-20220815083517-0c74f9139fd6
+	github.com/Holmose/go-workflow v1.0.1
+	github.com/dop251/goja v0.0.0-20221003171542-5ea1285e6c91
 	github.com/go-sql-driver/mysql v1.6.0
-	github.com/mattn/go-sqlite3 v1.14.15
-	github.com/robfig/cron/v3 v3.0.0
+	github.com/robfig/cron/v3 v3.0.1
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
 
