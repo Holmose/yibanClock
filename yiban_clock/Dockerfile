@@ -1,6 +1,6 @@
 FROM golang:1.19-alpine AS build-env
 
-ARG YIBAN_FILENAME=yiban3_V1.0.1
+ARG YIBAN_FILENAME=yiban3_V1.0.2
 WORKDIR /app
 COPY go.mod ./
 COPY go.sum ./
