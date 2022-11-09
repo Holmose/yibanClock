@@ -37,4 +37,4 @@ jobs:
         run: |
           cd yiban_django
           docker buildx create --name mybuilder --use
-          docker buildx build --push --platform linux/amd64 -t ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }} .
+          docker buildx build --push --platform linux/arm64,linux/arm/v7,linux/amd64 -t ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }} .
