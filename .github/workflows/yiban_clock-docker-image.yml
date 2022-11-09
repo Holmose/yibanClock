@@ -37,7 +37,7 @@ jobs:
         run: |
           cd yiban_clock/
           docker buildx create --name mybuilder --use
-          docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t ${{ secrets.USERNAME }}/yiban-clock:${{ github.sha }} .
+          docker buildx build --push --platform linux/amd64 -t ${{ secrets.USERNAME }}/yiban-clock:${{ github.sha }} .
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
         with:

@@ -37,4 +37,4 @@ jobs:
         run: |
           cd yiban_nginx
           docker buildx create --name mybuilder --use
-          docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t ${{ secrets.USERNAME }}/yiban-nginx:${{ github.sha }} .
+          docker buildx build --push --platform linux/amd64 -t ${{ secrets.USERNAME }}/yiban-nginx:${{ github.sha }} .
