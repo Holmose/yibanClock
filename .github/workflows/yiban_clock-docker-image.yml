@@ -33,14 +33,15 @@ jobs:
           logout: true
 
       # Runs a set of commands using the runners shell
-      - name: build image
-        run: |
-          cd yiban_clock/
-          docker run -it --rm --privileged tonistiigi/binfmt --install all
-          docker buildx create --name mybuilder --use
-          docker buildx ls
-          docker buildx build --push --platform linux/arm64,linux/arm/v7,linux/amd64 -t ${{ secrets.USERNAME }}/yiban-clock:${{ github.sha }} .
-          docker buildx ls
+      - name: Build and publish image
+        uses: ilteoood/docker_buildx@master
+        with:
+          publish: true
+          imageName: ${{ secrets.USERNAME }}/yiban-clock
+          platform: linux/amd64,linux/arm64,linux/arm/v7
+          tag: ${{ github.sha }}
+          dockerHubUser: ${{ secrets.USERNAME }}
+          dockerHubPassword: ${{ secrets.PASSWORD }}
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
         with:
