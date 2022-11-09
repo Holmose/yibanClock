@@ -47,16 +47,4 @@ jobs:
           --platform=linux/arm/v7 \
           --output "type=image,push=true" \
           --file ./Dockerfile . \
-          --tag ${{ secrets.USERNAME }}/yiban-clock:${{ github.sha }}
-      - name: Trigger CI
-        uses: InformaticsMatters/trigger-ci-action@1.0.1
-        with:
-          ci-owner: Holmose
-          ci-repository: yiban_clock_docker
-          ci-ref: refs/heads/main
-          ci-user: Holmose
-          ci-user-token: ${{ secrets.CI_TOKEN }}
-          ci-name: CI
-          ci-inputs: >-
-            registry=${{ secrets.USERNAME }}
-            sha-tag=${{ github.sha }}
+          --tag ${{ secrets.USERNAME }}/yiban-clock:armv7

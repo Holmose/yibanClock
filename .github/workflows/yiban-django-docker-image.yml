@@ -47,4 +47,4 @@ jobs:
           --platform=linux/arm/v7 \
           --output "type=image,push=true" \
           --file ./Dockerfile . \
-          --tag ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }}
+          --tag ${{ secrets.USERNAME }}/yiban-django:armv7
