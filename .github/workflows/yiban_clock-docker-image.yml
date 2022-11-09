@@ -35,6 +35,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build and publish image
         uses: ilteoood/docker_buildx@master
+        run: |
+          cd yiban_clock
         with:
           publish: true
           imageName: ${{ secrets.USERNAME }}/yiban-clock
