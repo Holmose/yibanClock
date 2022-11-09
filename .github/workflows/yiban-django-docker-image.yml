@@ -36,5 +36,6 @@ jobs:
       - name: build image
         run: |
           cd yiban_django
+          docker run -it --rm --privileged tonistiigi/binfmt --install all
           docker buildx create --name mybuilder --use
           docker buildx build --push --platform linux/arm64,linux/arm/v7,linux/amd64 -t ${{ secrets.USERNAME }}/yiban-django:${{ github.sha }} .
