@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: yiban_clock-CI
+name: yiban_clock_amd64-CI
 
 # Controls when the workflow will run
 on:
