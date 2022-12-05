@@ -34,7 +34,7 @@ if [ ! $MAIL_HOST ];then
   echo "The environment variable MYSQL_USER empty got: $MAIL_HOST"
   exit 100
 fi
-if [ ! -f /app/config ];then
+if [ ! -f /app/config/config.json ];then
   mkdir -p /app/config
   cp /config.json /app/config/config.json
   sed -i 's/$MYSQL_USER/'$MYSQL_USER'/g' /app/config/config.json
